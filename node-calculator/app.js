@@ -9,13 +9,13 @@ let operation = readLine.question(
 );
 
 if (operation === 'add') {
-  console.log(add(num1, num2));
+  console.log(`The result is : ${add(num1, num2)}.`);
 } else if (operation === 'mul') {
-  console.log(mul(num1, num2));
+  console.log(`The result is : ${mul(num1, num2)}.`);
 } else if (operation === 'div') {
-  console.log(div(num1, num2));
+  console.log(`The result is : ${div(num1, num2)}.`);
 } else if (operation === 'sub') {
-  console.log(sub(num1, num2));
+  console.log(`The result is : ${sub(num1, num2)}.`);
 }
 
 function add() {
