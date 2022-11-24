@@ -9,6 +9,7 @@ form.addEventListener('submit', (e) => {
   const item = form.title.value;
   //Dynamically creating ul in order to be able to delete all list items and then add new list items
   const ul = document.createElement('ul');
+  ul.setAttribute('id', 'list');
   listDiv.append(ul);
 
   const li = document.createElement('li');

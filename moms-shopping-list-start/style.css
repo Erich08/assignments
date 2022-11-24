@@ -34,6 +34,8 @@
 #list > li {
   list-style-type: none;
   margin: 10px auto;
+  width: 100px;
+  text-align: center;
 }
 
 #list div {
@@ -47,6 +49,11 @@
 }
 
 .edit {
+  width: 50px;
+  margin: 0 auto;
+}
+
+.save {
   width: 50px;
   margin: 0 auto;
 }
