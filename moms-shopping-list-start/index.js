@@ -19,16 +19,36 @@ form.addEventListener('submit', (e) => {
   deleteItem.setAttribute('class', 'delete');
 
   const editItem = document.createElement('button');
-  editItem.setAttribute('id', 'edit');
+  editItem.setAttribute('class', 'edit');
   editItem.textContent = 'Edit';
 
-  ul.append(li, deleteItem, editItem);
+  const saveItem = document.createElement('button');
+  saveItem.setAttribute('class', 'save');
+  saveItem.textContent = 'Save';
+
+  ul.append(li, deleteItem, editItem, saveItem);
   form.title.value = '';
 
   const removeItem = document.getElementsByClassName('delete');
-  Array.prototype.slice.call(removeItem).forEach(function (item) {
-    item.addEventListener('click', function (e) {
+  Array.prototype.slice.call(removeItem).forEach((item) => {
+    item.addEventListener('click', (e) => {
       e.target.parentNode.remove();
+    });
+  });
+
+  const editAnItem = document.getElementsByClassName('edit');
+  Array.prototype.slice.call(editAnItem).forEach((item) => {
+    item.addEventListener('click', () => {
+      li.contentEditable = true;
+      li.style.backgroundColor = 'lightblue';
+    });
+  });
+
+  const saveAnItem = document.getElementsByClassName('save');
+  Array.prototype.slice.call(saveAnItem).forEach((item) => {
+    item.addEventListener('click', () => {
+      li.contentEditable = false;
+      li.style.backgroundColor = 'white';
     });
   });
 });
