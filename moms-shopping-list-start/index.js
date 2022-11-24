@@ -25,6 +25,7 @@ form.addEventListener('submit', (e) => {
   const saveItem = document.createElement('button');
   saveItem.setAttribute('class', 'save');
   saveItem.textContent = 'Save';
+  saveItem.hidden = true;
 
   ul.append(li, deleteItem, editItem, saveItem);
   form.title.value = '';
@@ -40,7 +41,9 @@ form.addEventListener('submit', (e) => {
   Array.prototype.slice.call(editAnItem).forEach((item) => {
     item.addEventListener('click', () => {
       li.contentEditable = true;
-      li.style.backgroundColor = 'lightblue';
+      li.style.backgroundColor = 'lightgray';
+      editItem.hidden = true;
+      saveItem.hidden = false;
     });
   });
 
@@ -49,6 +52,8 @@ form.addEventListener('submit', (e) => {
     item.addEventListener('click', () => {
       li.contentEditable = false;
       li.style.backgroundColor = 'white';
+      editItem.hidden = false;
+      saveItem.hidden = true;
     });
   });
 });
