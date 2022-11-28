@@ -8,34 +8,45 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   const item = form.title.value;
   //Dynamically creating ul in order to be able to delete all list items and then add new list items
-  const ul = document.createElement('ul');
-  ul.setAttribute('id', 'list');
-  listDiv.append(ul);
+  //   const ul = document.createElement('ul');
+  //   ul.setAttribute('id', 'list');
+  //   listDiv.append(ul);
 
   const li = document.createElement('li');
-  li.textContent = item;
+
+  listItem.appendChild(li);
+
+  const div = document.createElement('div');
+  div.textContent = item;
+  li.appendChild(div);
 
   const deleteItem = document.createElement('button');
   deleteItem.textContent = 'x';
   deleteItem.setAttribute('class', 'delete');
+  li.appendChild(deleteItem);
 
   const editItem = document.createElement('button');
   editItem.setAttribute('class', 'edit');
   editItem.textContent = 'Edit';
+  li.appendChild(editItem);
 
   const saveItem = document.createElement('button');
   saveItem.setAttribute('class', 'save');
   saveItem.textContent = 'Save';
   saveItem.hidden = true;
 
-  ul.append(li, deleteItem, editItem, saveItem);
+  //   li.appendChild(div, deleteItem, editAnItem, saveAnItem);
   form.title.value = '';
 
-  const removeItem = document.getElementsByClassName('delete');
-  Array.prototype.slice.call(removeItem).forEach((item) => {
-    item.addEventListener('click', (e) => {
-      e.target.parentNode.remove();
-    });
+  //   const removeItem = document.getElementsByClassName('delete');
+  //   Array.prototype.slice.call(removeItem).forEach((item) => {
+  //     item.addEventListener('click', (e) => {
+  //       e.target.parentNode.remove();
+  //     });
+  //   });
+
+  deleteItem.addEventListener('click', () => {
+    div.parentElement.remove();
   });
 
   const editAnItem = document.getElementsByClassName('edit');
