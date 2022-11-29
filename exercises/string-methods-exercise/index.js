@@ -15,7 +15,7 @@ function findMiddleIndex(string) {
   return middleIndex;
 }
 
-console.log(findMiddleIndex('randomstringgoeshere'));
+// console.log(findMiddleIndex('randomstringgoeshere'));
 
 function returnFirstHalf(string) {
   let findHalf = findMiddleIndex(string);
@@ -34,7 +34,7 @@ function capFirstHalfLowSecondHalf(string) {
   return firstHalf + secondHalf;
 }
 
-// console.log(capFirstHalfLowSecondHalf('hello'));
+console.log(capFirstHalfLowSecondHalf('hello'));
 
 function capitalize(string) {
   let arr = string.toLowerCase().split(' ');
@@ -45,4 +45,4 @@ function capitalize(string) {
   return arr.join(' ');
 }
 
-console.log(capitalize('hey friends! practice practice practice!'));
+// console.log(capitalize('hey friends! practice practice practice!'));
