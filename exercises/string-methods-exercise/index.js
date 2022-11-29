@@ -15,7 +15,7 @@ function findMiddleIndex(string) {
   return middleIndex;
 }
 
-// console.log(findMiddleIndex('randomstringgoeshere'));
+console.log(findMiddleIndex('randomstringgoeshere'));
 
 function returnFirstHalf(string) {
   let findHalf = findMiddleIndex(string);
