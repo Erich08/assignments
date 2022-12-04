@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box;
+  font-size: 0px;
+  margin: 0;
+}
+
+body {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.first {
+  background-color: #f5c6d6;
+  height: 150px;
+  width: 100%;
+  border-bottom: 10px solid white;
+}
+
+.second-row {
+  display: flex;
+  width: 100%;
+}
+
+.second-row :nth-child(1) {
+  border-left: none;
+}
+
+.second-row :nth-child(4) {
+  border-right: none;
+}
+
+.second {
+  background-color: #ee2e84;
+  height: 150px;
+  width: 25%;
+  border: 10px solid white;
+}
+
+.third-row {
+  display: flex;
+  width: 100%;
+  border-bottom: 10px solid white;
+}
+
+.third-row :nth-child(1) {
+  border-left: none;
+}
+
+.third-row :nth-child(2) {
+  border-right: none;
+}
+
+.third {
+  height: 150px;
+  width: 50%;
+  background-color: #85cfd8;
+  border: 10px solid white;
+}
+
+.fourth-row {
+  display: flex;
+  width: 100%;
+}
+
+.seventy-five {
+  background-color: #8dc63f;
+  height: 150px;
+  width: 75%;
+  border-right: 10px solid white;
+}
+
+.twenty-five {
+  background-color: #e76e34;
+  height: 150px;
+  width: 25%;
+  border-left: 10px solid white;
+}
+
+@media only screen and (max-width: 768px) {
+  .first {
+    background-color: #f5c6d6;
+    height: 150px;
+    width: 100%;
+    border-bottom: 10px solid white;
+  }
+
+  .second-row {
+    display: block;
+    width: 100%;
+  }
+
+  .second {
+    background-color: #ee2e84;
+    height: 150px;
+    width: 100%;
+    border: 10px solid white;
+    border-left: none;
+    border-right: none;
+  }
+
+  .third-row {
+    display: block;
+    width: 100%;
+  }
+
+  .third {
+    height: 150px;
+    width: 100%;
+    background-color: #85cfd8;
+    border: 10px solid white;
+    border-left: none;
+    border-right: none;
+  }
+
+  .fourth-row {
+    display: block;
+    width: 100%;
+  }
+
+  .seventy-five {
+    background-color: #8dc63f;
+    height: 150px;
+    width: 100%;
+    border-right: none;
+  }
+
+  .twenty-five {
+    background-color: #e76e34;
+    height: 150px;
+    width: 100%;
+    border-top: 20px solid white;
+    border-left: none;
+  }
+}
