@@ -47,6 +47,8 @@ nav ul li a:visited {
   text-decoration: none;
 }
 
+/* **********Image Styling********** */
+
 .hero-img {
   display: flex;
   flex-direction: column;
@@ -82,4 +84,23 @@ nav ul li a:visited {
   border-radius: 10px;
   margin-left: 2rem;
   margin-bottom: 2rem;
+}
+
+/* **********About Page Styling********** */
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  align-items: center;
+  text-align: center;
+}
+
+.about-header {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.about {
+  width: 35%;
 }
