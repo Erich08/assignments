@@ -94,6 +94,7 @@ nav ul li a:visited {
   margin-top: 2rem;
   align-items: center;
   text-align: center;
+  height: 100vh;
 }
 
 .about-header {
@@ -139,4 +140,15 @@ nav ul li a:visited {
 #co-owner {
   margin-left: 1rem;
   width: 500px;
+}
+
+/* **********Footer Styling********** */
+
+.footer-container {
+  height: 100px;
+  background-color: #22a39f;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
