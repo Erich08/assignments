@@ -1,5 +1,46 @@
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: #f3efe0;
+}
+
+/* **********NAV STYLING********* */
+
+.nav-container {
+  background-color: #434242;
+  width: inherit;
+  height: 100px;
+  color: white;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  margin: 0 5rem;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 1rem;
+  color: white;
+}
+
+nav ul li a {
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+nav ul li a:visited {
+  color: white;
+}
+
+.header-link {
+  color: white;
+  text-decoration: none;
 }
