@@ -152,3 +152,30 @@ nav ul li a:visited {
   justify-content: center;
   align-items: center;
 }
+
+/* **********Media********** */
+
+@media only screen and (max-width: 768px) {
+  nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-img img {
+    height: 300px;
+    width: 350px;
+  }
+
+  #image_list ul {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1.5rem;
+  }
+
+  #contact-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
