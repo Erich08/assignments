@@ -3,7 +3,7 @@
 const readLine = require('readline-sync');
 const greeting = console.log('Welcome to the best console RPG ever created!');
 const userName = readLine.question('Please tell me your name: ');
-const userInventory = [];
+let userInventory = [];
 let hp = 100;
 let enemyHp = 100;
 
@@ -44,33 +44,41 @@ function fight() {
     determineWinner();
   }
 }
-//TODO: Create a loop while the users HP || the enemys HP > 0 that will continue fighting.
-//Award player HP and a random item if they win
-//If they die, console.log a death message and then ask if they would like to play again.
+//TODO: Award player HP and a random item if they win
+//Choose from a random enemy
 function determineWinner() {
+  const enemies = ['Orc', 'Goblin', 'Giant Spider', 'Minotaur'];
+  const randomEnemy = Math.floor(Math.random() * enemies.length);
+  const enemy = enemies[randomEnemy];
+  const items = ['Sword', 'Helmet', 'Boots', 'Pants', 'Bow and Arrows'];
+  const randomItems = Math.floor(Math.random() * items.length);
+  const playerItem = items[randomItems];
+
   while (hp > 0 && enemyHp > 0) {
     const playerDmg = randomDmg(10, 21);
     const enemyDmg = randomDmg(10, 21);
     const attack = readLine.keyIn('Press "a" to attack! ', { limit: 'a' });
     console.log(
-      `**********\nYou attack the enemy for ${playerDmg} points of damage!`
+      `**********\nYou attack the ${enemy} for ${playerDmg} points of damage!`
     );
     enemyHp = enemyHp - playerDmg;
     console.log(
-      `**********\nThe enemy attacks you for ${enemyDmg} points of damage!\n**********`
+      `**********\nThe ${enemy} attacks you for ${enemyDmg} points of damage!\n**********`
     );
     hp = hp - playerDmg;
     if (enemyHp <= 0) {
       console.log(
-        '**********\nYou have slain your enemy and have been healed for 50 points of damage.\n**********'
+        '**********\nYou have slain your enemy and have been healed for 50 points of damage and an item has been added to your inventory.\n**********'
       );
       hp = hp + 50;
       enemyHp = 100;
-      console.log(enemyHp);
+      userInventory.push(playerItem);
       break;
     } else if (hp <= 0) {
       console.log('**********\nYou have been slain!\n**********');
       playAgain();
+      enemyHp = 100;
+      userInventory = [];
       break;
     }
   }
