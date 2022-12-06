@@ -5,6 +5,7 @@ const greeting = console.log('Welcome to the best console RPG ever created!');
 const userName = readLine.question('Please tell me your name: ');
 const userInventory = [];
 let hp = 100;
+let enemyHp = 100;
 
 function walk() {
   //TODO add option for user to check HP, name, and inventory
@@ -47,11 +48,9 @@ function determineWinner() {
   if (winner <= 0.33) {
     console.log('You lost this battle and have taken 20 damage!');
     hp = hp - 20;
-    console.log(`You have ${hp} HP remaining`);
   } else {
     console.log('You are victorious! You have taken 10 points of damage!');
     hp = hp - 10;
-    console.log(`You have ${hp} HP remaining`);
   }
 }
 
@@ -63,6 +62,11 @@ function playAgain() {
   } else {
     console.log('Thank you for playing!');
   }
+}
+
+function randomDmg(max, min) {
+  const attackDamage = Math.floor(Math.random() * (max - min) + min);
+  return attackDamage;
 }
 
 while (hp > 0) {
