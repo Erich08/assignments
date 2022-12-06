@@ -7,14 +7,23 @@ const userInventory = [];
 let hp = 100;
 
 function walk() {
-  const userWalk = readLine.question('Press "w" to walk. ').toLowerCase();
-  if (userWalk === 'w') {
+  //TODO add option for user to check HP, name, and inventory
+  const options = ['Walk', 'Player Info'];
+  const userOption = readLine.keyInSelect(
+    options,
+    'Choose one of the following options:'
+  );
+  if (userOption === 0) {
+    console.log('You continue walking...');
     const enemyAppears = Math.random().toFixed(2);
     if (enemyAppears <= 0.33) {
       fight();
     }
-  } else {
-    userWalk;
+  } else if (userOption === 1) {
+    console.log(`Username: ${userName} HP: ${hp} Items: `);
+  } else if (userOption === -1) {
+    hp = 0;
+    playAgain();
   }
 }
 
@@ -28,6 +37,7 @@ function fight() {
   } else if (willFight === 'r' && attemptToRun >= 0.5) {
     console.log('You have successfully escaped.');
   } else if (attemptToRun < 0.5) {
+    console.log("You're attempt to escape has failed. Prepare for the attack!");
     determineWinner();
   }
 }
@@ -42,6 +52,16 @@ function determineWinner() {
     console.log('You are victorious! You have taken 10 points of damage!');
     hp = hp - 10;
     console.log(`You have ${hp} HP remaining`);
+  }
+}
+
+function playAgain() {
+  const playAgain = readLine.keyInYN('Would you like to play again? ');
+  if (playAgain === true) {
+    hp = 100;
+    walk();
+  } else {
+    console.log('Thank you for playing!');
   }
 }
 
