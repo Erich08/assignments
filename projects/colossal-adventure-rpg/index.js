@@ -44,8 +44,8 @@ function fight() {
     determineWinner();
   }
 }
-//TODO: Award player HP and a random item if they win
-//Choose from a random enemy
+
+//This function handles the random enemy that appears as well as the random item a user will be given if they defeat the enemy.
 function determineWinner() {
   const enemies = ['Orc', 'Goblin', 'Giant Spider', 'Minotaur'];
   const randomEnemy = Math.floor(Math.random() * enemies.length);
@@ -75,6 +75,7 @@ function determineWinner() {
       userInventory.push(playerItem);
       break;
     } else if (hp <= 0) {
+      //Asks the user if they would like to play again. If yes, resets enemy hp to 100 and clears out user inventory.
       console.log('**********\nYou have been slain!\n**********');
       playAgain();
       enemyHp = 100;
@@ -83,6 +84,7 @@ function determineWinner() {
     }
   }
 }
+
 //Allows the user to decide if they would like to play again or not.
 function playAgain() {
   const playAgain = readLine.keyInYN('Would you like to play again? ');
@@ -92,7 +94,8 @@ function playAgain() {
     console.log('Thank you for playing!');
   }
 }
-//Generates a random amount of damage within a specified range.
+
+//Generates a random amount of damage within a specified range to handle enemy encounters.
 function randomDmg(max, min) {
   const attackDamage = Math.floor(Math.random() * (max - min) + min);
   return attackDamage;
