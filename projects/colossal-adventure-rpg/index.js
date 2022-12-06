@@ -8,7 +8,6 @@ let hp = 100;
 let enemyHp = 100;
 
 function walk() {
-  //TODO add option for user to check HP, name, and inventory
   const options = ['Walk', 'Player Info'];
   const userOption = readLine.keyInSelect(
     options,
@@ -17,11 +16,13 @@ function walk() {
   if (userOption === 0) {
     console.log('You continue walking...');
     const enemyAppears = Math.random().toFixed(2);
-    if (enemyAppears <= 0.33) {
+    if (enemyAppears <= 0.4) {
       fight();
     }
   } else if (userOption === 1) {
-    console.log(`Username: ${userName} HP: ${hp} Items: `);
+    console.log(
+      `**********\nUsername: ${userName}\nHP: ${hp}\nItems: ${userInventory}\n**********`
+    );
   } else if (userOption === -1) {
     hp = 0;
     playAgain();
@@ -29,41 +30,61 @@ function walk() {
 }
 
 function fight() {
-  const willFight = readLine.question(
-    'A wild enemy has appeared! Press "f" to fight or "r" to attempt to run. '
+  const willFight = readLine.keyIn(
+    'A wild enemy has appeared! Press "f" to fight or "r" to attempt to run. ',
+    { limit: 'fr' }
   );
-  const attemptToRun = Math.random().toFixed(2);
+  const attemptToRun = Math.random();
   if (willFight === 'f') {
     determineWinner();
   } else if (willFight === 'r' && attemptToRun >= 0.5) {
     console.log('You have successfully escaped.');
   } else if (attemptToRun < 0.5) {
-    console.log("You're attempt to escape has failed. Prepare for the attack!");
+    console.log('Your attempt to escape has failed. Prepare for the attack!');
     determineWinner();
   }
 }
-
+//TODO: Create a loop while the users HP || the enemys HP > 0 that will continue fighting.
+//Award player HP and a random item if they win
+//If they die, console.log a death message and then ask if they would like to play again.
 function determineWinner() {
-  const winner = Math.random().toFixed(2);
-  if (winner <= 0.33) {
-    console.log('You lost this battle and have taken 20 damage!');
-    hp = hp - 20;
-  } else {
-    console.log('You are victorious! You have taken 10 points of damage!');
-    hp = hp - 10;
+  while (hp > 0 && enemyHp > 0) {
+    const playerDmg = randomDmg(10, 21);
+    const enemyDmg = randomDmg(10, 21);
+    const attack = readLine.keyIn('Press "a" to attack! ', { limit: 'a' });
+    console.log(
+      `**********\nYou attack the enemy for ${playerDmg} points of damage!`
+    );
+    enemyHp = enemyHp - playerDmg;
+    console.log(
+      `**********\nThe enemy attacks you for ${enemyDmg} points of damage!\n**********`
+    );
+    hp = hp - playerDmg;
+    if (enemyHp <= 0) {
+      console.log(
+        '**********\nYou have slain your enemy and have been healed for 50 points of damage.\n**********'
+      );
+      hp = hp + 50;
+      enemyHp = 100;
+      console.log(enemyHp);
+      break;
+    } else if (hp <= 0) {
+      console.log('**********\nYou have been slain!\n**********');
+      playAgain();
+      break;
+    }
   }
 }
-
+//Allows the user to decide if they would like to play again or not.
 function playAgain() {
   const playAgain = readLine.keyInYN('Would you like to play again? ');
   if (playAgain === true) {
     hp = 100;
-    walk();
   } else {
     console.log('Thank you for playing!');
   }
 }
-
+//Generates a random amount of damage within a specified range.
 function randomDmg(max, min) {
   const attackDamage = Math.floor(Math.random() * (max - min) + min);
   return attackDamage;
