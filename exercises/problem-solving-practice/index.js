@@ -17,19 +17,18 @@ function largest(arr) {
 // console.log(largest([3, 5, 2, 8, 1]));
 // console.log(largest([-13, 40, 3, 0, 19, 22]));
 
-function lettersWithStrings(arr) {
+function lettersWithStrings(arr, char) {
   let stringsWithLetters = [];
-  const regEx = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/gim;
   for (let i = 0; i < arr.length; i++) {
-    if (arr[i].match(regEx)) {
+    if (arr[i].includes(char)) {
       stringsWithLetters.push(arr[i]);
     }
   }
   return stringsWithLetters;
 }
 
-console.log(lettersWithStrings(['$hello!', '%%^%%', 'test!'], '!'));
-// console.log(lettersWithStrings(['#3', '$$$', 'C%4!', 'Hey!'], '!'));
+// console.log(lettersWithStrings(['$hello!', '%%^%%', 'test!'], '!'));
+console.log(lettersWithStrings(['#3', '$$$', 'C%4!', 'Hey!'], '!'));
 // console.log(
 //   lettersWithStrings(['yellow', 'green', '^up^', 'down', 'dog'], 'h')
 // );
