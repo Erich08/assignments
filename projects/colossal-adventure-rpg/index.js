@@ -4,8 +4,10 @@ const readLine = require('readline-sync');
 const greeting = console.log('Welcome to the best console RPG ever created!');
 const userName = readLine.question('Please tell me your name: ');
 let userInventory = [];
+let equippedItems = [];
 let hp = 100;
 let enemyHp = 100;
+let weaponEquipped = false;
 
 function walk() {
   const options = ['Walk', 'Player Info'];
@@ -50,13 +52,13 @@ function determineWinner() {
   const enemies = ['Orc', 'Goblin', 'Giant Spider', 'Minotaur'];
   const randomEnemy = Math.floor(Math.random() * enemies.length);
   const enemy = enemies[randomEnemy];
-  const items = ['Sword', 'Helmet', 'Boots', 'Pants', 'Bow and Arrows'];
+  const items = ['Long Sword', 'Short Sword', 'Dagger', 'Katana'];
   const randomItems = Math.floor(Math.random() * items.length);
   const playerItem = items[randomItems];
 
-  while (hp > 0 && enemyHp > 0) {
+  while (hp >= 0 && enemyHp >= 0) {
     const playerDmg = randomDmg(10, 21);
-    const enemyDmg = randomDmg(10, 21);
+    const enemyDmg = randomDmg(5, 8);
     const attack = readLine.keyIn('Press "a" to attack! ', { limit: 'a' });
     console.log(
       `**********\nYou attack the ${enemy} for ${playerDmg} points of damage!`
@@ -65,12 +67,13 @@ function determineWinner() {
     console.log(
       `**********\nThe ${enemy} attacks you for ${enemyDmg} points of damage!\n**********`
     );
-    hp = hp - playerDmg;
+    hp = hp - enemyDmg;
+    console.log(hp);
     if (enemyHp <= 0) {
       console.log(
-        '**********\nYou have slain your enemy and have been healed for 50 points of damage and an item has been added to your inventory.\n**********'
+        '**********\nYou have slain your enemy and have been healed for 30 points of damage and an item has been added to your inventory.\n**********'
       );
-      hp = hp + 50;
+      hp = hp + 30;
       enemyHp = 100;
       userInventory.push(playerItem);
       break;
