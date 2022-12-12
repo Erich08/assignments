@@ -18,7 +18,6 @@ function walk() {
     'Choose one of the following options:'
   );
   if (userOption === 0) {
-    console.log('You continue walking...');
     const enemyAppears = Math.random();
     if (enemyAppears <= 0.4) {
       fight();
@@ -42,10 +41,12 @@ function walk() {
 }
 
 function fight() {
-  const willFight = readLine.keyIn(
-    'A wild enemy has appeared! Press "f" to fight or "r" to attempt to run. ',
-    { limit: 'fr' }
-  );
+  const willFight = readLine
+    .keyIn(
+      'A wild enemy has appeared! Press "f" to fight or "r" to attempt to run. ',
+      { limit: 'fr' }
+    )
+    .toLowerCase();
   const attemptToRun = Math.random();
   if (willFight === 'f') {
     determineWinner();
@@ -66,7 +67,7 @@ function determineWinner() {
   const randomItems = Math.floor(Math.random() * items.length);
   const playerItem = items[randomItems];
 
-  while (hp >= 0 && enemyHp >= 0) {
+  while (hp > 0 && enemyHp > 0) {
     const playerDmg = randomDmg(10, 16);
     const enemyDmg = randomDmg(5, 8);
     const bonusDmg = randomDmg(5, 11);
