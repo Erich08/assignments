@@ -1,7 +1,7 @@
 'use strict';
 
 const readLine = require('readline-sync');
-const greeting = console.log('Welcome to the best console RPG ever created!');
+const greeting = console.log('Welcome to my Colossal Adventure RPG!');
 const userName = readLine.question('Please tell me your name: ');
 let userInventory = [];
 let hasItems = false;
@@ -100,7 +100,6 @@ function determineWinner() {
           `You have reached level ${playerLevel}! You have been fully healed.`
         );
       }
-      console.log(experience);
       hasItems = true;
       //Added if statement here to avoid adding 30 HP upon player leveling up so total HP doesn't exceed 100HP.
       if (hp < 100) {
