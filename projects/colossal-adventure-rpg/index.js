@@ -91,7 +91,7 @@ function determineWinner() {
       console.log(
         '**********\nYou have slain your enemy and have been healed for 30 points of damage and an item has been added to your inventory. You have gained 25 points of experience!\n**********'
       );
-      experience = experience + 50;
+      experience = experience + 25;
       if (experience === 100) {
         playerLevel++;
         hp = 100;
