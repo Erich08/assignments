@@ -4,27 +4,37 @@ const readLine = require('readline-sync');
 const greeting = console.log('Welcome to the best console RPG ever created!');
 const userName = readLine.question('Please tell me your name: ');
 let userInventory = [];
-let equippedItems = [];
+let hasItems = false;
 let hp = 100;
 let enemyHp = 100;
 let weaponEquipped = false;
+let playerLevel = 1;
+let experience = 0;
 
 function walk() {
-  const options = ['Walk', 'Player Info'];
+  const options = ['Walk', 'Player Info', 'Equip Weapon'];
   const userOption = readLine.keyInSelect(
     options,
     'Choose one of the following options:'
   );
   if (userOption === 0) {
     console.log('You continue walking...');
-    const enemyAppears = Math.random().toFixed(2);
+    const enemyAppears = Math.random();
     if (enemyAppears <= 0.4) {
       fight();
     }
   } else if (userOption === 1) {
     console.log(
-      `**********\nUsername: ${userName}\nHP: ${hp}\nItems: ${userInventory}\n**********`
+      `**********\nUsername: ${userName}\nHP: ${hp}\nItems: ${userInventory}\nLevel: ${playerLevel}\n**********`
     );
+    //Checks to see if the user has items and will run if === true;
+  } else if (userOption === 2 && hasItems) {
+    const equipWeapon = readLine.keyInYN(
+      'Would you like to equip a weapon to increase your attack damage? '
+    );
+    if (equipWeapon === true) {
+      weaponEquipped = true;
+    }
   } else if (userOption === -1) {
     hp = 0;
     playAgain();
@@ -52,28 +62,50 @@ function determineWinner() {
   const enemies = ['Orc', 'Goblin', 'Giant Spider', 'Minotaur'];
   const randomEnemy = Math.floor(Math.random() * enemies.length);
   const enemy = enemies[randomEnemy];
-  const items = ['Long Sword', 'Short Sword', 'Dagger', 'Katana'];
+  const items = [' 🗡 ', ' 🪓 ', ' ⛏ ', ' 🏹 '];
   const randomItems = Math.floor(Math.random() * items.length);
   const playerItem = items[randomItems];
 
   while (hp >= 0 && enemyHp >= 0) {
-    const playerDmg = randomDmg(10, 21);
+    const playerDmg = randomDmg(10, 16);
     const enemyDmg = randomDmg(5, 8);
+    const bonusDmg = randomDmg(5, 11);
     const attack = readLine.keyIn('Press "a" to attack! ', { limit: 'a' });
-    console.log(
-      `**********\nYou attack the ${enemy} for ${playerDmg} points of damage!`
-    );
-    enemyHp = enemyHp - playerDmg;
+    //Checks to see if use has an equipped weapon and will add bonus damage if === true.
+    if (weaponEquipped === true) {
+      console.log(
+        `**********\nYou attack the ${enemy} for ${playerDmg} points of damage + ${bonusDmg} points of bonus damage!`
+      );
+      enemyHp = enemyHp - (playerDmg + bonusDmg);
+    } else {
+      console.log(
+        `**********\nYou attack the ${enemy} for ${playerDmg} points of damage!`
+      );
+      enemyHp = enemyHp - playerDmg;
+    }
     console.log(
       `**********\nThe ${enemy} attacks you for ${enemyDmg} points of damage!\n**********`
     );
     hp = hp - enemyDmg;
-    console.log(hp);
     if (enemyHp <= 0) {
       console.log(
-        '**********\nYou have slain your enemy and have been healed for 30 points of damage and an item has been added to your inventory.\n**********'
+        '**********\nYou have slain your enemy and have been healed for 30 points of damage and an item has been added to your inventory. You have gained 25 points of experience!\n**********'
       );
-      hp = hp + 30;
+      experience = experience + 50;
+      if (experience === 100) {
+        playerLevel++;
+        hp = 100;
+        experience = 0;
+        console.log(
+          `You have reached level ${playerLevel}! You have been fully healed.`
+        );
+      }
+      console.log(experience);
+      hasItems = true;
+      //Added if statement here to avoid adding 30 HP upon player leveling up so total HP doesn't exceed 100HP.
+      if (hp < 100) {
+        hp = hp + 30;
+      }
       enemyHp = 100;
       userInventory.push(playerItem);
       break;
