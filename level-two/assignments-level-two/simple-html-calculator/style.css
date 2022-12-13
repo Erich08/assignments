@@ -22,8 +22,15 @@ body {
   margin-bottom: 1rem;
 }
 
-#add {
+#addSpan,
+#subtractSpan,
+#multiplySpan {
+  margin-top: 2rem;
+}
+
+#addDiv {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: red;
@@ -33,9 +40,10 @@ body {
   border-radius: 5px;
 }
 
-#subtract {
+#subtractDiv {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   background-color: blue;
   width: 500px;
@@ -44,9 +52,10 @@ body {
   border-radius: 5px;
 }
 
-#multiply {
+#multiplyDiv {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   background-color: green;
   width: 500px;
