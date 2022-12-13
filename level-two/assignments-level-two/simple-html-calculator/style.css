@@ -3,3 +3,53 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#calculatorHeader {
+  margin-bottom: 2rem;
+}
+
+#addHeader,
+#subtractHeader,
+#multiplyHeader {
+  margin-bottom: 1rem;
+}
+
+#add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  width: 500px;
+  height: 200px;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+
+#subtract {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
+  width: 500px;
+  height: 200px;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+
+#multiply {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
+  width: 500px;
+  height: 200px;
+  border-radius: 5px;
+}
