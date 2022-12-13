@@ -3,3 +3,78 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  height: 100px;
+}
+
+#form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#form-container li {
+  list-style-type: none;
+  padding: 10px;
+}
+
+#form-container img {
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  border-radius: 5px;
+}
+
+#form-container p {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+input[type='number'] {
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  width: 50%;
+}
+
+button {
+  width: 100%;
+  border: none;
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+#footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+  background-color: blue;
+}
+
+#footer-container li {
+  list-style-type: none;
+  display: inline;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
