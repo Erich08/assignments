@@ -5,10 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    k
     <title>Travel Form</title>
   </head>
   <body>
+    <div id="formContainer">
+      <h1 id="travelHeader">Travel Form</h1>
+      <form name="travelForm">
+        <input type="text" name="firstName" placeholder="First Name" required />
+        <br />
+        <input type="text" name="lastName" placeholder="Last Name" required />
+        <br />
+        <input type="number" name="age" placeholder="Age" required />
+        <br />
+        <input type="radio" name="gender" value="male" required /> Male
+        <br />
+        <input type="radio" name="gender" value="female" required /> Female
+        <br />
+        <span>Choose Destination:</span>
+        <br />
+        <select name="location" required>
+          <option value="london">London</option>
+          <option value="paris">Paris</option>
+          <option value="Barcelona">Barcelona</option>
+        </select>
+        <br />
+        <span>Do you have any dietary restrictions? Check all the apply:</span>
+        <br />
+        <input type="checkbox" name="dietary" /> Vegetarian
+        <br />
+        <input type="checkbox" name="dietary" /> Kosher
+        <br />
+        <input type="checkbox" name="dietary" /> Lactose Free
+        <br />
+        <button>Submit</button>
+      </form>
+    </div>
     <script src="index.js"></script>
   </body>
 </html>
