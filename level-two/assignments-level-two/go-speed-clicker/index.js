@@ -26,6 +26,7 @@ function btnTwoClickCount() {
   localStorage.setItem('buttonTwo', btnTwoClicks);
 }
 
+//Fires as soon as the page loads. Added this here in order to avoid having it live inside of the event listener which was causing it to refire everytime the button was clicked.
 window.addEventListener('load', (event) => {
   btnOneTotal.textContent = localStorage.getItem('buttonOne');
   let timer = setInterval(function () {
@@ -46,6 +47,7 @@ window.addEventListener('load', (event) => {
   console.log('hello');
 });
 
+//Fires as soon as the page loads. Added this here in order to avoid having it live inside of the event listener which was causing it to refire everytime the button was clicked.
 window.addEventListener('load', (event) => {
   btnTwoTotal.textContent = localStorage.getItem('buttonTwo');
   let timer = setInterval(function () {
@@ -68,5 +70,3 @@ window.addEventListener('load', (event) => {
 btnOne.addEventListener('click', btnOneClickCount);
 
 btnTwo.addEventListener('click', btnTwoClickCount);
-
-//TODO: Set an interval with a countdown of X seconds. Clear that interval after the elapsed time. Remove the event listeners from both buttons and then display the amount of times the buttons were clicked.
