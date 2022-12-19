@@ -3,3 +3,45 @@
   margin: 0;
   padding: 0;
 }
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 125px;
+}
+
+#button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#button-one,
+#button-two {
+  height: 200px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+#button-one {
+  background-color: blue;
+}
+
+#button-two {
+  background-color: red;
+}
+
+#btn-one,
+#btn-two {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  width: 75px;
+  cursor: pointer;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
