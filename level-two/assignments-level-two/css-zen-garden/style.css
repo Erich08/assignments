@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  background-image: url(http://www.csszengarden.com/214/gridlines.png);
+}
+
+#grid-container {
+  display: grid;
+  grid-template-columns: repeat(11, auto);
+  grid-template-rows: repeat(40, 75px);
+  height: 100vh;
+}
+
+#header-one {
+  background-color: transparent;
+  grid-column: 1 / 8;
+  grid-row: 1 / 5;
+}
+
+#header-two {
+  background-color: blue;
+  grid-column: 8 / -1;
+  grid-row: 1 / 5;
+}
+
+#main-one {
+  background-color: white;
+  grid-column: 1 / 8;
+  grid-row: 5 / 15;
+}
+
+#main-one-right {
+  background-color: orange;
+  grid-column: 8 / -1;
+  grid-row: 5 / 15;
+}
+
+#main-two {
+  background-image: url(http://www.csszengarden.com/214/contours-opaque.png),
+    url(http://www.csszengarden.com/214/gridlines-opaque.png),
+    url(http://www.csszengarden.com/214/bamboo.png);
+  background-repeat: repeat, repeat, no-repeat;
+  background-size: auto, auto, cover;
+  grid-column: 1 / 8;
+  grid-row: 15 / 23;
+}
+
+#main-two-right {
+  background-image: url(http://www.csszengarden.com/214/contours-opaque.png),
+    url(http://www.csszengarden.com/214/gridlines-opaque.png),
+    url(http://www.csszengarden.com/214/bamboo.png);
+  background-repeat: repeat, repeat, no-repeat;
+  background-size: auto, auto, cover;
+  grid-column: 8 / -1;
+  grid-row: 15 / 23;
+}
+
+#main-three {
+  background-color: brown;
+  grid-column: 1 / 8;
+  grid-row: 23 / 31;
+}
+
+#main-three-right {
+  background-color: aqua;
+  grid-column: 8 / -1;
+  grid-row: 23 / 34;
+}
+
+#above-footer {
+  background-color: blueviolet;
+  grid-column: 1 / 10;
+  grid-row: 31 / 34;
+}
+
+#footer {
+  background-color: #134347;
+  grid-column: 1 / -1;
+  grid-row: 34 / 36;
+}
