@@ -6,6 +6,8 @@ const userName = readline.keyInSelect(
   characters,
   'Which character would you like to play as?'
 );
+//Will continue to run until user.status === 'dead'
+const playGame = setInterval(randomNum, 2000);
 
 class Player {
   constructor(name, totalCoins, status, hasStar) {
@@ -62,8 +64,13 @@ const user = new Player('name', 0, 'Big', false);
 //Selects the player name based off of user's choice
 if (userName === 0) {
   user.setName('Mario');
+  playGame;
 } else if (userName === 1) {
   user.setName('Luigi');
+  playGame;
+} else {
+  //Does not allow program to run if the user selects 'cancel'
+  clearInterval(playGame);
 }
 
 //Generates a random number between 0 and 2
@@ -78,7 +85,3 @@ function randomNum() {
   }
   user.print();
 }
-
-//Will continue to run until user.status === 'dead'
-const playGame = setInterval(randomNum, 2000);
-playGame;
