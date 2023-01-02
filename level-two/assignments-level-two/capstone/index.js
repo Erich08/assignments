@@ -13,12 +13,14 @@ function getData() {
 //Performs a POST request to the API and then calls getData and sends that data to listData to render the information to the DOM
 todoform.addEventListener('submit', (e) => {
   e.preventDefault();
+
   const newTodo = {
     title: todoform.title.value,
     description: todoform.description.value,
     imgUrl: todoform.imgUrl.value,
     price: parseInt(todoform.price.value),
   };
+
   todoform.title.value = '';
   todoform.description.value = '';
   todoform.imgUrl.value = '';
@@ -33,26 +35,64 @@ todoform.addEventListener('submit', (e) => {
 //Calls clearList to prevent duplicates then loops through the data to append the information to the DOm
 function listData(data) {
   clearList();
-  console.log(data);
 
   for (let i = 0; i < data.length; i++) {
-    console.log(data[i]._id);
     const div = document.createElement('div');
     const h1 = document.createElement('h1');
-    h1.textContent = data[i].title;
     const span = document.createElement('span');
-    span.textContent = data[i].description;
     const p = document.createElement('p');
-    p.textContent = `Price: $${data[i].price}`;
     const img = document.createElement('img');
-    img.src = data[i].imgUrl;
     const btn = document.createElement('button');
+    const btn2 = document.createElement('button');
+    const btn3 = document.createElement('button');
+
+    h1.textContent = data[i].title;
+    span.textContent = data[i].description;
+    p.textContent = data[i].price;
+    img.src = data[i].imgUrl;
     btn.textContent = 'Delete';
-    div.append(h1, span, p, img, btn);
+    btn2.textContent = 'Edit';
+    btn3.textContent = 'Save';
+    div.append(h1, span, p, img, btn, btn2, btn3);
+    btn3.hidden = true;
     document.getElementById('todo-list').appendChild(div);
+
+    //Allows user to delete Todos
     btn.addEventListener('click', (e) => {
       axios
         .delete(`https://api.vschool.io/erich8/todo/${data[i]._id}`)
+        .then((res) => location.reload())
+        .catch((err) => console.log(err));
+    });
+
+    btn2.addEventListener('click', () => {
+      h1.contentEditable = true;
+      span.contentEditable = true;
+      p.contentEditable = true;
+      h1.style.backgroundColor = 'lightgray';
+      span.style.backgroundColor = 'lightgray';
+      p.style.backgroundColor = 'lightgray';
+      btn2.hidden = true;
+      btn3.hidden = false;
+    });
+
+    btn3.addEventListener('click', () => {
+      const edit = {
+        title: h1.textContent,
+        description: span.textContent,
+        price: p.textContent,
+      };
+      h1.contentEditable = false;
+      span.contentEditable = false;
+      p.contentEditable = false;
+      h1.style.backgroundColor = 'black';
+      span.style.backgroundColor = 'black';
+      p.style.backgroundColor = 'black';
+      btn2.hidden = false;
+      btn3.hidden = true;
+
+      axios
+        .put(`https://api.vschool.io/erich8/todo/${data[i]._id}`, edit)
         .then((res) => location.reload())
         .catch((err) => console.log(err));
     });
@@ -67,6 +107,7 @@ function clearList() {
   }
 }
 
+//Calling getData() here to have todo list persist through page reload
 window.onload = function () {
   getData();
 };
