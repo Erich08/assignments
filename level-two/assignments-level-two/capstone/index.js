@@ -1,4 +1,8 @@
 'use strict';
 
-const axios = require('axios');
 const todoform = document.todoform;
+
+todoform.addEventListener('submit', (e) => {
+  e.preventDefault();
+  console.log('Hello');
+});
