@@ -47,6 +47,7 @@ function listData(data) {
     const saveBtn = document.createElement('button');
     const chkbox = document.createElement('input');
     const span2 = document.createElement('span');
+    const priceSpan = document.createElement('span');
 
     chkbox.type = 'checkbox';
     chkbox.name = 'completed';
@@ -60,6 +61,8 @@ function listData(data) {
     h1.setAttribute('id', `${data[i]._id}`);
 
     span.textContent = data[i].description;
+
+    priceSpan.textContent = data[i].price;
 
     p.textContent = data[i].price;
 
@@ -91,6 +94,7 @@ function listData(data) {
       span.contentEditable = true;
       p.contentEditable = true;
 
+      //Changes background color to show user that the content is now editable
       h1.style.backgroundColor = 'lightgray';
       span.style.backgroundColor = 'lightgray';
       p.style.backgroundColor = 'lightgray';
