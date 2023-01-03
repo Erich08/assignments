@@ -45,16 +45,36 @@ function listData(data) {
     const btn = document.createElement('button');
     const btn2 = document.createElement('button');
     const btn3 = document.createElement('button');
+    const chkbox = document.createElement('input');
+    const span2 = document.createElement('span');
+
+    chkbox.type = 'checkbox';
+    chkbox.name = 'completed';
+    chkbox.value = 'complete';
+    chkbox.id = 'completed';
+
+    span2.textContent = 'Completed? ';
+    span2.append(chkbox);
 
     h1.textContent = data[i].title;
+    h1.setAttribute('id', `${data[i]._id}`);
+
     span.textContent = data[i].description;
+
     p.textContent = data[i].price;
+
     img.src = data[i].imgUrl;
+
     btn.textContent = 'Delete';
+
     btn2.textContent = 'Edit';
+
     btn3.textContent = 'Save';
-    div.append(h1, span, p, img, btn, btn2, btn3);
+
+    div.append(h1, span, p, img, span2, btn, btn2, btn3);
+
     btn3.hidden = true;
+
     document.getElementById('todo-list').appendChild(div);
 
     //Allows user to delete Todos
@@ -69,9 +89,11 @@ function listData(data) {
       h1.contentEditable = true;
       span.contentEditable = true;
       p.contentEditable = true;
+
       h1.style.backgroundColor = 'lightgray';
       span.style.backgroundColor = 'lightgray';
       p.style.backgroundColor = 'lightgray';
+
       btn2.hidden = true;
       btn3.hidden = false;
     });
@@ -85,9 +107,11 @@ function listData(data) {
       h1.contentEditable = false;
       span.contentEditable = false;
       p.contentEditable = false;
+
       h1.style.backgroundColor = 'black';
       span.style.backgroundColor = 'black';
       p.style.backgroundColor = 'black';
+
       btn2.hidden = false;
       btn3.hidden = true;
 
@@ -95,6 +119,14 @@ function listData(data) {
         .put(`https://api.vschool.io/erich8/todo/${data[i]._id}`, edit)
         .then((res) => location.reload())
         .catch((err) => console.log(err));
+    });
+
+    chkbox.addEventListener('click', (e) => {
+      console.log(e);
+      if (completed.checked === true) {
+        // e.target.span.span.div.h1.style.textDecoration = 'line-through';
+        console.log('hello');
+      }
     });
   }
 }
