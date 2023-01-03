@@ -32,7 +32,7 @@ todoform.addEventListener('submit', (e) => {
     .catch((err) => console.log(err));
 });
 
-//Calls clearList to prevent duplicates then loops through the data to append the information to the DOm
+//Calls clearList to prevent duplicates then loops through the data to append the information to the DOM
 function listData(data) {
   clearList();
 
@@ -42,9 +42,9 @@ function listData(data) {
     const span = document.createElement('span');
     const p = document.createElement('p');
     const img = document.createElement('img');
-    const btn = document.createElement('button');
-    const btn2 = document.createElement('button');
-    const btn3 = document.createElement('button');
+    const deleteBtn = document.createElement('button');
+    const editBtn = document.createElement('button');
+    const saveBtn = document.createElement('button');
     const chkbox = document.createElement('input');
     const span2 = document.createElement('span');
 
@@ -65,27 +65,28 @@ function listData(data) {
 
     img.src = data[i].imgUrl;
 
-    btn.textContent = 'Delete';
+    deleteBtn.textContent = 'Delete';
 
-    btn2.textContent = 'Edit';
+    editBtn.textContent = 'Edit';
 
-    btn3.textContent = 'Save';
+    saveBtn.textContent = 'Save';
 
-    div.append(h1, span, p, img, span2, btn, btn2, btn3);
+    div.append(h1, span, p, img, span2, deleteBtn, editBtn, saveBtn);
 
-    btn3.hidden = true;
+    saveBtn.hidden = true;
 
     document.getElementById('todo-list').appendChild(div);
 
     //Allows user to delete Todos
-    btn.addEventListener('click', (e) => {
+    deleteBtn.addEventListener('click', () => {
       axios
         .delete(`https://api.vschool.io/erich8/todo/${data[i]._id}`)
         .then((res) => location.reload())
         .catch((err) => console.log(err));
     });
 
-    btn2.addEventListener('click', () => {
+    //Allows the user to edit their todo's. Once clicked, edit button is hidden and save button appears
+    editBtn.addEventListener('click', () => {
       h1.contentEditable = true;
       span.contentEditable = true;
       p.contentEditable = true;
@@ -94,11 +95,12 @@ function listData(data) {
       span.style.backgroundColor = 'lightgray';
       p.style.backgroundColor = 'lightgray';
 
-      btn2.hidden = true;
-      btn3.hidden = false;
+      editBtn.hidden = true;
+      saveBtn.hidden = false;
     });
 
-    btn3.addEventListener('click', () => {
+    //Handles save functionality after edit button then makes a PUT request to the data base to reflect changes made
+    saveBtn.addEventListener('click', () => {
       const edit = {
         title: h1.textContent,
         description: span.textContent,
@@ -112,8 +114,8 @@ function listData(data) {
       span.style.backgroundColor = 'black';
       p.style.backgroundColor = 'black';
 
-      btn2.hidden = false;
-      btn3.hidden = true;
+      editBtn.hidden = false;
+      saveBtn.hidden = true;
 
       axios
         .put(`https://api.vschool.io/erich8/todo/${data[i]._id}`, edit)
@@ -121,13 +123,38 @@ function listData(data) {
         .catch((err) => console.log(err));
     });
 
-    chkbox.addEventListener('click', (e) => {
-      console.log(e);
-      if (completed.checked === true) {
-        // e.target.span.span.div.h1.style.textDecoration = 'line-through';
-        console.log('hello');
+    //Event listener to handle strike through on task title and mark task complete or incomplete based off input
+    chkbox.addEventListener('click', () => {
+      if (chkbox.checked) {
+        h1.style.textDecoration = 'line-through';
+        isComplete();
+      } else if (!chkbox.checked) {
+        h1.style.textDecoration = 'none';
+        isNotCompleted();
       }
     });
+
+    //Handles PUT request to update API if task is marked complete
+    function isComplete() {
+      const completed = {
+        completed: true,
+      };
+      axios
+        .put(`https://api.vschool.io/erich8/todo/${data[i]._id}`, completed)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    }
+
+    //Handles PUT request to update API if task is marked incomplete
+    function isNotCompleted() {
+      const completed = {
+        completed: false,
+      };
+      axios
+        .put(`https://api.vschool.io/erich8/todo/${data[i]._id}`, completed)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    }
   }
 }
 
