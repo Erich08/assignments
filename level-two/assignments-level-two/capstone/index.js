@@ -62,7 +62,7 @@ function listData(data) {
 
     span.textContent = data[i].description;
 
-    priceSpan.textContent = data[i].price;
+    priceSpan.textContent = 'Price:';
 
     p.textContent = data[i].price;
 
@@ -74,7 +74,7 @@ function listData(data) {
 
     saveBtn.textContent = 'Save';
 
-    div.append(h1, span, p, img, span2, deleteBtn, editBtn, saveBtn);
+    div.append(h1, span, priceSpan, p, img, span2, deleteBtn, editBtn, saveBtn);
 
     saveBtn.hidden = true;
 
