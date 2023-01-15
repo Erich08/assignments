@@ -1,41 +1,195 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Nav Component CSS */
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(130, 129, 129);
+  font-family: 'Open Sans';
+  color: #ffff;
+}
+
+nav h1 {
+  font-weight: 800;
+  margin-left: 15%;
+}
+
+nav h1:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+nav ul {
+  display: flex;
+  margin-right: 15%;
+}
+
+nav ul li {
+  margin-left: 2.5rem;
+  list-style-type: none;
+}
+
+nav a {
+  text-decoration: none;
+  color: #ffff;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+nav a:hover {
+  opacity: 0.7;
+}
+
+/* Header Component CSS */
+
+header {
+  height: 500px;
+  position: relative;
+  background-color: black;
+}
+
+.blog--title {
+  position: absolute;
+  z-index: 1;
+  top: 35%;
+  left: 40%;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.blog--title h1 {
+  font-family: 'Open Sans';
+  font-size: 5rem;
+  color: #ffff;
+  font-weight: 800;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.blog--title p {
+  font-family: 'Open Sans';
+  font-size: 1.5rem;
+  color: #ffff;
+  font-weight: 300;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+header img {
+  position: absolute;
+  height: 500px;
+  width: 100vw;
+  object-fit: cover;
+  opacity: 0.6;
 }
 
-.card {
-  padding: 2em;
+/* BlogPost Component CSS */
+
+.blog--post {
+  margin-top: 2rem;
+  width: 700px;
 }
 
-.read-the-docs {
-  color: #888;
+.blog--post a {
+  text-decoration: none;
+  color: black;
+}
+
+.blog--post h1,
+h2 {
+  font-family: 'Open Sans';
+}
+
+.blog--post h1 {
+  font-weight: 800;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.blog--post h2 {
+  font-weight: 300;
+  font-size: 2rem;
+}
+
+.blog--post p,
+span {
+  font-style: italic;
+  font-size: 1.475rem;
+  margin-top: 1rem;
+}
+
+.blog--post p {
+  opacity: 0.7;
+}
+
+.blog--post a:hover {
+  color: #0085a1;
+}
+
+.hr {
+  height: 0px;
+  border: 1px solid black;
+  margin-top: 2.5rem;
+  opacity: 0.4;
+}
+
+/* BlogList Component CSS */
+
+.blog--container {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  width: 700px;
+}
+
+.posts-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  padding: 20px;
+  width: 200px;
+  text-decoration: none;
+  background-color: #0085a1;
+  text-transform: uppercase;
+  font-family: 'Open Sans';
+  font-weight: 800;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+/* Footer Component CSS */
+
+footer {
+  height: 200px;
+  border-top: 1px solid gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer ul li {
+  list-style-type: none;
+}
+
+footer ul li:hover {
+  background-color: #0085a1;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+footer p {
+  font-style: italic;
+  font-family: 'Lora';
+  margin-top: 1rem;
+  font-size: 1rem;
+  opacity: 0.7;
 }
