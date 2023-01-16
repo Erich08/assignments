@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-image: url('https://www.notion.so/image/https%3A%2F%2Fcoursework.vschool.io%2Fcontent%2Fimages%2Fsize%2Fw2000%2F2017%2F10%2Fcancun_banner1.jpg?id=43008326-5d79-46a3-b40e-fbdc217a9bc1&table=block&spaceId=6aef2f33-de49-4357-824c-927199bca931&width=1150&userId=65762d10-e05b-4ed0-90b4-e4ea8ddfaf67&cache=v2');
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-size: cover;
+}
+
+.header--title {
+  background-color: black;
+  height: 100vh;
+  opacity: 0.6;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+}
+
+.header--title h1 {
+  font-size: 3rem;
+  margin: 2rem 0;
+}
+
+/* Card Component CSS */
+
+main {
+  height: 300px;
+}
+
+.card--container {
+  height: 200px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}
