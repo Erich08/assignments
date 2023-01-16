@@ -63,16 +63,17 @@ const friends = [
       {
         name: 'Patches',
         breed: 'Sphynx cat',
-        img: './sphynx.jpg',
+        img: './sphynx2.jpg',
       },
       {
         name: 'Tiger',
         breed: 'Sphynx cat',
+        img: './sphynx3.jpg',
       },
       {
         name: 'Oscar',
         breed: 'Sphynx cat',
-        img: './sphynx.jpg',
+        img: './sphynx4.jpg',
       },
     ],
   },

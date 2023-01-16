@@ -12,7 +12,6 @@ function Friend({ name, age, pets, img }) {
         <h1>
           {name} is {age} years old and has the following pet(s):
         </h1>
-        <h2>Age: {age}</h2>
         {friendList}
       </div>
     </div>
