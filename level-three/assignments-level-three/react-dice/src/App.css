@@ -1,0 +1,48 @@
+* {
+  box-sizing: border;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.numbers--container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dice {
+  height: 200px;
+  width: 200px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  margin-top: 5rem;
+  margin-left: 1rem;
+}
+
+.button--container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+button {
+  width: 25%;
+  border: none;
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
