@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import './App.css';
 import BadgeForm from './components/BadgeForm';
+import BadgeList from './components/BadgeList';
 
 function App() {
   const [formData, setFormData] = useState({
@@ -14,7 +15,9 @@ function App() {
     comments: '',
   });
 
-  console.log(formData);
+  const [badgeData, setBadgeData] = useState([]);
+
+  console.log(formData.phone);
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
@@ -23,9 +26,25 @@ function App() {
     }));
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setBadgeData((prevData) => [...prevData, formData]);
+  };
+
+  const badges = badgeData.map((badge, index) => {
+    return <BadgeList key={index} {...badge} />;
+  });
+
   return (
     <div className='App'>
-      <BadgeForm formData={formData} handleChange={handleChange} />
+      <div className='badge--form'>
+        <BadgeForm
+          formData={formData}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
+      </div>
+      <div className='badge--list'>{badges}</div>
     </div>
   );
 }

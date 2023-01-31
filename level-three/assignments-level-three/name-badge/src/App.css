@@ -6,6 +6,12 @@
 
 .App {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.badge--form {
+  display: flex;
   justify-content: center;
 }
 
@@ -45,6 +51,7 @@ button {
   background-color: #3f51b5;
   color: white;
   margin-top: 1rem;
+  cursor: pointer;
 }
 
 form {
@@ -52,4 +59,59 @@ form {
   flex-direction: column;
   align-items: center;
   width: 300px;
+}
+
+.badge--list {
+  height: 500px;
+  width: 700px;
+  margin-top: 2rem;
+}
+
+#badge--container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3f51b5;
+  width: 100%;
+  color: white;
+  height: 50px;
+  border-radius: 8px;
+}
+
+#name--phone {
+  display: flex;
+  justify-content: space-between;
+  width: 700px;
+  padding: 20px;
+}
+
+#loc--food {
+  display: flex;
+  justify-content: space-between;
+  width: 700px;
+  padding: 20px;
+}
+
+#email {
+  display: flex;
+  justify-content: flex-start;
+  width: 700px;
+  padding: 20px;
+}
+
+#comments {
+  border: 1px solid black;
+  width: 95%;
+  height: 200px;
+  padding: 10px;
+  margin-bottom: 1rem;
 }
