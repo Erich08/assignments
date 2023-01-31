@@ -23,7 +23,7 @@ function BadgeList({
         <h3>Favorite food: {favFood}</h3>
       </div>
       <div id='email'>
-        <h3>{email}</h3>
+        <h3>Email: {email}</h3>
       </div>
       <div id='comments'>
         <p>{comments}</p>
