@@ -17,6 +17,7 @@ function App() {
 
   const [badgeData, setBadgeData] = useState([]);
 
+  //Checks to make sure that all input fields are filled out so that submit button will function
   const isFormValid =
     formData.firstName.length > 0 &&
     formData.lastName.length > 0 &&
@@ -43,6 +44,7 @@ function App() {
       event.target[i].value = '';
     }
 
+    //Resets formData state so that the button will be unavailable again until all of the input fields are completed.
     setFormData({
       firstName: '',
       lastName: '',

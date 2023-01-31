@@ -10,16 +10,8 @@ function BadgeForm({
   comments,
   handleChange,
   handleSubmit,
-  formData,
+  isFormValid,
 }) {
-  const isFormValid =
-    formData.firstName.length > 0 &&
-    formData.lastName.length > 0 &&
-    formData.email.length > 0 &&
-    formData.birthPlace.length > 0 &&
-    formData.phone.length > 0 &&
-    formData.favFood.length > 0 &&
-    formData.comments.length > 0;
   return (
     <div className='form--container'>
       <form onSubmit={handleSubmit}>
