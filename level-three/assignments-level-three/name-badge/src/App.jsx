@@ -17,6 +17,15 @@ function App() {
 
   const [badgeData, setBadgeData] = useState([]);
 
+  const isFormValid =
+    formData.firstName.length > 0 &&
+    formData.lastName.length > 0 &&
+    formData.email.length > 0 &&
+    formData.birthPlace.length > 0 &&
+    formData.phone.length > 0 &&
+    formData.favFood.length > 0 &&
+    formData.comments.length > 0;
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
@@ -28,9 +37,21 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setBadgeData((prevData) => [...prevData, formData]);
+
+    //Clears form data after submit event fires
     for (let i = 0; i <= 6; i++) {
       event.target[i].value = '';
     }
+
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      birthPlace: '',
+      phone: '',
+      favFood: '',
+      comments: '',
+    });
   };
 
   const badges = badgeData.map((badge, index) => {
@@ -44,6 +65,7 @@ function App() {
           formData={formData}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
+          isFormValid={isFormValid}
         />
       </div>
       <div className='badge--list'>{badges}</div>

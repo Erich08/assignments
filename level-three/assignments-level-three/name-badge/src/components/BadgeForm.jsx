@@ -10,8 +10,16 @@ function BadgeForm({
   comments,
   handleChange,
   handleSubmit,
+  formData,
 }) {
-  const form = document.form;
+  const isFormValid =
+    formData.firstName.length > 0 &&
+    formData.lastName.length > 0 &&
+    formData.email.length > 0 &&
+    formData.birthPlace.length > 0 &&
+    formData.phone.length > 0 &&
+    formData.favFood.length > 0 &&
+    formData.comments.length > 0;
   return (
     <div className='form--container'>
       <form onSubmit={handleSubmit}>
@@ -79,7 +87,13 @@ function BadgeForm({
           minLength='3'
           required
         />
-        <button>Submit</button>
+        {!isFormValid ? (
+          <button style={{ backgroundColor: 'gray', cursor: 'default' }}>
+            Submit
+          </button>
+        ) : (
+          <button>Submit</button>
+        )}
       </form>
     </div>
   );
