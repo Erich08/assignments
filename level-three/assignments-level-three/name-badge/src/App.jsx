@@ -17,7 +17,6 @@ function App() {
 
   const [badgeData, setBadgeData] = useState([]);
 
-  console.log(formData.phone);
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
@@ -29,6 +28,9 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setBadgeData((prevData) => [...prevData, formData]);
+    for (let i = 0; i <= 6; i++) {
+      event.target[i].value = '';
+    }
   };
 
   const badges = badgeData.map((badge, index) => {

@@ -11,6 +11,7 @@ function BadgeForm({
   handleChange,
   handleSubmit,
 }) {
+  const form = document.form;
   return (
     <div className='form--container'>
       <form onSubmit={handleSubmit}>
@@ -20,7 +21,8 @@ function BadgeForm({
           value={firstName}
           placeholder='First Name'
           onChange={handleChange}
-          minlength='3'
+          minLength='3'
+          required
         />
         <input
           type='text'
@@ -28,7 +30,8 @@ function BadgeForm({
           value={lastName}
           placeholder='Last Name'
           onChange={handleChange}
-          minlength='3'
+          minLength='3'
+          required
         />
         <input
           type='email'
@@ -36,7 +39,8 @@ function BadgeForm({
           value={email}
           placeholder='Email'
           onChange={handleChange}
-          minlength='3'
+          minLength='3'
+          required
         />
         <input
           type='text'
@@ -44,7 +48,8 @@ function BadgeForm({
           value={birthPlace}
           placeholder='Place of Birth'
           onChange={handleChange}
-          minlength='3'
+          minLength='3'
+          required
         />
         <input
           type='tel'
@@ -53,7 +58,8 @@ function BadgeForm({
           value={phone}
           placeholder='Phone'
           onChange={handleChange}
-          minlength='3'
+          minLength='3'
+          required
         />
         <small>Format: 123-456-7858</small>
         <input
@@ -62,14 +68,16 @@ function BadgeForm({
           value={favFood}
           placeholder='Favorite Food'
           onChange={handleChange}
-          minlength='3'
+          minLength='3'
+          required
         />
         <textarea
           name='comments'
           value={comments}
           placeholder='Tell us about yourself'
           onChange={handleChange}
-          minlength='3'
+          minLength='3'
+          required
         />
         <button>Submit</button>
       </form>
